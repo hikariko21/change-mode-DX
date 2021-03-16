@@ -37,11 +37,11 @@
         $my_plugin_slug = self::$mdir ; 
       
         // トップレベルにオリジナルのメニューを追加（購読者相当 read editor
-        add_menu_page('CangeMode', 'CangeMode', 'editor',
+        add_menu_page('CangeMode', 'CangeMode', 'manage_options',
             $my_plugin_slug,
             array($this,'ds_form_view'),
             plugins_url('/images/icon-admin.png', __FILE__),
-            10
+            11
         );
       }
 
