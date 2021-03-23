@@ -7,6 +7,15 @@
     $checked[1] = 'checked';
   }
   $ckindex = 0;
+
+  $wpwritable = is_writable( ABSPATH) ;
+  $checked = array_fill(0,2,'');
+  if( $wpwritable ){
+    $checked[0] = 'checked';
+  }else{
+    $checked[1] = 'checked';
+  }
+  $wpckindex = 0;
 ?>
 
 <div class="conteiner">
@@ -18,8 +27,8 @@
         <article class="pl-1">
           <h4>Wordpress</h4>  
           <p  class="pl-1">
-            <label><input type="radio" name="wps" value="Wordpress" >Wordpress</label>
-            <label><input type="radio" name="wps" value="Other" >Other</label>
+            <label><input type="radio" name="wps" value="Wordpress" <?=$checked[$wpckindex]?>>Wordpress</label>
+            <label><input type="radio" name="wps" value="Other" <?=$checked[++$wpckindex]?>>Other</label>
             <button type="submit">変更する</button>
           </p>
         </article>
