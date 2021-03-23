@@ -20,7 +20,7 @@
 
       add_action('admin_print_styles',  function () {
         echo '<style>.pl-1{ padding-left: 1em;} .pl-1 h4{font-size:1.15em;font-weight:600;margin-bottom:.5em;}article.pl-1 {
-          padding-bottom: 2em;}pre.ta-minal {background: #333;width: 600px;padding: 1em;font-size: 1.2em;color: #0f0;font-family: "courier NEW" ,consolas;}
+          padding-bottom: 2em;}pre.ta-minal {background: #333;width: 800px;padding: 1em;font-size: 1.2em;color: #0f0;font-family: "courier NEW" ,consolas;}
         </style>';
       } ); 
        
@@ -84,12 +84,12 @@
 
     /* WPに書き込み権限を与えない570与える770*/
     protected function modProtect($mod){
-      shell_exec('chmod -R $mod ' .ABSPATH.'/wp-content');
+      shell_exec("chmod -R $mod " .ABSPATH.'/wp-content');
       $results = shell_exec('ls -la ' .ABSPATH.'/wp-content');
       $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
     }
     protected function wpProtect($wpmod){
-      shell_exec('chmod -R $wpmod ' .ABSPATH);
+      shell_exec("chmod -R $wpmod " .ABSPATH);
       $results = shell_exec('ls -la ' .ABSPATH);
       $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
     }
