@@ -54,10 +54,10 @@
       }elseif(!empty( $_POST['thp'])){
         //テーマ､プラグイン ディレクトリの権限を変える
         if( $_POST['thp'] == 'Wordpress' ) {
-          $this->modUnProtect();
+          $this->modProtect('770');  //与える
           
         }elseif($_POST['thp'] == 'Other'){
-          $this->modProtect();
+          $this->modProtect('570');  // 与えない
           echo 'othr';
         }
 
@@ -66,7 +66,9 @@
         echo $_SESSION['cmdx']['results'] ;
       }
       
-      echo $_SESSION['cmdx']['results'] ;
+      if(isset($_SESSION['cmdx']['results']))
+        echo $_SESSION['cmdx']['results'];
+
       $_SESSION['cmdx'] = null;
       include 'ds-form-view.php';
 
@@ -74,22 +76,23 @@
 
     
 
-    /* WPに書き込み権限を与えない*/
-    public function modProtect(){
+    /* WPに書き込み権限を与える770与えない570*/
+    protected function modProtect($mod){
       
-      shell_exec('chmod -R 570 ' .ABSPATH.'/wp-content');
-      $results = shell_exec('ls -la ' .ABSPATH.'/wp-content');
+      shell_exec("chmod -R $mod " . ABSPATH.'/wp-content');
+      $results = shell_exec('ls -l ' .ABSPATH.'/wp-content');
       $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
     }
     
     
     
-    /* WPに書き込み権限を与える*/
+    /* WPに書き込み権限を
     public function modUnProtect(){
       shell_exec('chmod -R 770 ' .ABSPATH.'/wp-content');
-      $results = shell_exec('ls -la ' .ABSPATH.'/wp-content');
+      $results = shell_exec('ls -l ' .ABSPATH.'/wp-content');
       $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
     }
+    */
     
     
 
