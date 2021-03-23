@@ -1,12 +1,12 @@
 <?php
-  $writable = is_writable( ABSPATH."/wp-content") ;
-  $checked = array_fill(0,2,'');
-  if( $writable ){
-    $checked[0] = 'checked';
-  }else{
-    $checked[1] = 'checked';
-  }
-  $ckindex = 0;
+$writable = is_writable( ABSPATH."/wp-content") ;
+$checked = array_fill(0,2,'');
+if( $writable ){
+  $checked[0] = 'checked';
+}else{
+  $checked[1] = 'checked';
+}
+$ckindex = 0;
 ?>
 
 <div class="conteiner">
