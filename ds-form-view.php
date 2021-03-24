@@ -1,13 +1,4 @@
-<?php
-  $writable = is_writable( ABSPATH."/wp-content") ;
-  $checked = array_fill(0,2,'');
-  if( $writable ){
-    $checked[0] = 'checked';
-  }else{
-    $checked[1] = 'checked';
-  }
-  $ckindex = 0;
-?>
+
 <style>
 .pl-1{ padding-left: 1em;} 
 .pl-1 h4{font-size:1.15em;font-weight:600;margin-bottom:.5em;color: #3574b5;}
@@ -29,8 +20,18 @@ pre.ta-minal {background: #333;width: 563px;padding: 1em;font-size: 1.2em;color:
           <h4><strong>ディレクトリ</strong> <span>Wordpress</span></h4>  
           <p  class="pl-1">
             <strong>書き込み権限</strong>
-            <label><input type="radio" name="wps" value="Wordpress" >Wordpress</label>
-            <label><input type="radio" name="wps" value="グループ" >グループ</label>
+<?php
+  $wpwritable = is_writable( ABSPATH) ;
+  $checked = array_fill(0,2,'');
+  if( $wpwritable ){
+    $checked[0] = 'checked';
+  }else{
+    $checked[1] = 'checked';
+  }
+  $wpckindex = 0;
+  ?>
+            <label><input type="radio" name="wps" value="Wordpress" <?=$checked[$wpckindex]?>>Wordpress</label>
+            <label><input type="radio" name="wps" value="Other" <?=$checked[++$wpckindex]?>>グループのみ</label>
             <button type="submit">変更する</button>
           </p>
         </article>
@@ -41,8 +42,18 @@ pre.ta-minal {background: #333;width: 563px;padding: 1em;font-size: 1.2em;color:
           <h4><strong>ディレクトリ</strong> <span>uploads & theme & plugin</spa></h4>  
           <p class="pl-1">
             <strong>書き込み権限</strong>
+  <?php
+    $writable = is_writable( ABSPATH."/wp-content") ;
+    $checked = array_fill(0,2,'');
+    if( $writable ){
+      $checked[0] = 'checked';
+    }else{
+      $checked[1] = 'checked';
+    }
+    $ckindex = 0;
+  ?>
             <label><input type="radio" name="thp" value="Wordpress" <?=$checked[$ckindex]?>>Wordpress</label>
-            <label><input type="radio" name="thp" value="グループ" <?=$checked[++$ckindex]?>>グループ</label>
+            <label><input type="radio" name="thp" value="Other" <?=$checked[++$ckindex]?>>グループのみ</label>
             <button type="submit">変更する</button>
           </p>
         </article>
