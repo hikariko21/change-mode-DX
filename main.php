@@ -23,6 +23,7 @@
           padding-bottom: 2em;}pre.ta-minal {background: #333;width: 800px;padding: 1em;font-size: 1.2em;color: #0f0;font-family: "courier NEW" ,consolas;}
         </style>';
       } ); 
+
        
     }
 
@@ -67,13 +68,9 @@
           echo 'other';
         }
 
-      }else{
-        if( !empty($_SESSION['cmdx']['results'] ))
-        echo $_SESSION['cmdx']['results'] ;
       }
       
-      if (isset($_SESSION['cmdx']['results']))
-      echo $_SESSION['cmdx']['results'] ;
+      if (isset($_SESSION['cmdx']['results'])) echo $_SESSION['cmdx']['results'] ;
 
       $_SESSION['cmdx'] = null;
       include 'ds-form-view.php';
@@ -82,15 +79,25 @@
 
     
 
+<<<<<<< HEAD
     /* WPに書き込み権限を 与えない=570 与える=770*/
     protected function modProtect($mod){
       shell_exec("chmod -R $mod " .ABSPATH.'/wp-content');
       $results = shell_exec('ls -la ' .ABSPATH.'/wp-content');
       $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
     }
+=======
+    /* WPに書き込み権限を与えない570与える770*/
+>>>>>>> a1d6213eb39ce447d9d4a43fe0c0dcc7bc81b915
     protected function wpProtect($wpmod){
       shell_exec("chmod -R $wpmod " .ABSPATH);
       $results = shell_exec('ls -la ' .ABSPATH);
+      $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
+    }
+    
+    protected function modProtect($mod){
+      shell_exec("chmod -R $mod " .ABSPATH.'/wp-content');
+      $results = shell_exec('ls -la ' .ABSPATH.'/wp-content');
       $_SESSION['cmdx']['results'] =  "<pre class='ta-minal'>$results</pre>";
     }
     
