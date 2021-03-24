@@ -50,20 +50,20 @@
       if( !empty( $_POST['wps']) ){ 
         //wp ディレクトリの権限を変える
         if( $_POST['wps'] == 'Wordpress' ) {
-          $this->wpProtect('570'); //与えない
+          $this->wpProtect('770'); //与える
           
         }elseif($_POST['wps'] == 'Other'){
-          $this->wpProtect('770'); //与える
+          $this->wpProtect('570'); //与えない
           echo 'other';
         }
         
       }elseif(!empty( $_POST['thp'])){
         //テーマ､プラグイン ディレクトリの権限を変える
         if( $_POST['thp'] == 'Wordpress' ) {
-          $this->modProtect('570'); //与えない
+          $this->modProtect('770'); //与える
           
         }elseif($_POST['thp'] == 'Other'){
-          $this->modProtect('770'); //与える
+          $this->modProtect('570'); //与えない
           echo 'other';
         }
 
@@ -82,7 +82,7 @@
 
     
 
-    /* WPに書き込み権限を与えない570与える770*/
+    /* WPに書き込み権限を 与えない=570 与える=770*/
     protected function modProtect($mod){
       shell_exec("chmod -R $mod " .ABSPATH.'/wp-content');
       $results = shell_exec('ls -la ' .ABSPATH.'/wp-content');
