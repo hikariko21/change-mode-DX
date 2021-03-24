@@ -19,10 +19,12 @@
       add_action('admin_menu',array( $this, 'add_quote_setting' ) );
 
       add_action('admin_print_styles',  function () {
-        echo '<style>.pl-1{ padding-left: 1em;} .pl-1 h4{font-size:1.15em;font-weight:600;margin-bottom:.5em;}article.pl-1 {
-          padding-bottom: 2em;}pre.ta-minal {background: #333;width: 563px;padding: 1em;font-size: 1.2em;color: #0f0;font-family: "courier NEW" ,consolas;}
-        </style>';
+        echo '';
+        echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
+        echo '<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">';
+
       } ); 
+
        
     }
 
@@ -56,7 +58,7 @@
         if( $_POST['thp'] == 'Wordpress' ) {
           $this->modUnProtect();
           
-        }elseif($_POST['thp'] == 'Other'){
+        }elseif($_POST['thp'] == 'グループ'){
           $this->modProtect();
           echo 'othr';
         }
@@ -66,7 +68,6 @@
         echo $_SESSION['cmdx']['results'] ;
       }
       
-      echo $_SESSION['cmdx']['results'] ;
       $_SESSION['cmdx'] = null;
       include 'ds-form-view.php';
 

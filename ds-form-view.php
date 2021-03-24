@@ -8,18 +8,29 @@
   }
   $ckindex = 0;
 ?>
+<style>
+.pl-1{ padding-left: 1em;} 
+.pl-1 h4{font-size:1.15em;font-weight:600;margin-bottom:.5em;color: #3574b5;}
+article.pl-1 {padding-bottom: 2em;padding: .2em 0 1em 1em !important; background: #fefefe;border-bottom: solid 1px #ccc;}
+pre.ta-minal {background: #333;width: 563px;padding: 1em;font-size: 1.2em;color: #0f0;font-family: "courier NEW" ,consolas;}
+.pl-1 label{margin: 2em;}
+.cmdx h3{background: #fff; line-height: 2em; border-bottom: 1px solid;  padding-left: .5em;}
+</style>
 
-<div class="conteiner">
+
+
+<div class="container">
   <div class="row cmdx">
     <section class="col-8">
         <h3>現在の書き込み権限</h3>
 
       <form action="" method="post">
         <article class="pl-1">
-          <h4>Wordpress</h4>  
+          <h4><strong>ディレクトリ</strong> <span>Wordpress</span></h4>  
           <p  class="pl-1">
+            <strong>書き込み権限</strong>
             <label><input type="radio" name="wps" value="Wordpress" >Wordpress</label>
-            <label><input type="radio" name="wps" value="Other" >Other</label>
+            <label><input type="radio" name="wps" value="グループ" >グループ</label>
             <button type="submit">変更する</button>
           </p>
         </article>
@@ -27,10 +38,11 @@
 
       <form action="" method="post">
         <article class="pl-1">
-          <h4>uploads & theme & plugin</h4>  
+          <h4><strong>ディレクトリ</strong> <span>uploads & theme & plugin</spa></h4>  
           <p class="pl-1">
+            <strong>書き込み権限</strong>
             <label><input type="radio" name="thp" value="Wordpress" <?=$checked[$ckindex]?>>Wordpress</label>
-            <label><input type="radio" name="thp" value="Other" <?=$checked[++$ckindex]?>>Other</label>
+            <label><input type="radio" name="thp" value="グループ" <?=$checked[++$ckindex]?>>グループ</label>
             <button type="submit">変更する</button>
           </p>
         </article>
